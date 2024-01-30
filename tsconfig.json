@@ -20,6 +20,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "components/JobInput.tsx",
+    "components/PersonalInput.tsx",
+    "components/SchoolInput.tsx",
+    "components/ViewJob.tsx",
+    "components/ViewPersonal.tsx",
+    "components/ViewSchool.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
