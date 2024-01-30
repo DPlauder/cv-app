@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ViewJob from "./ViewJob";
 
 export default function JobInput() {

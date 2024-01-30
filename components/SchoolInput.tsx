@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ViewSchool from "./ViewSchool";
 
 export default function Schoolinput() {
@@ -7,17 +7,22 @@ export default function Schoolinput() {
     subject: "",
     diploma: "",
   };
-  const [UserData, setUserData] = useState(schoolData);
-  const [show, setShow] = useState(false);
-
-  const blockStyle = { display: "block" };
-  const paddingStyle = { padding: "10px" };
+  const [userData, setUserData] = useState(schoolData);
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
     type: string
   ) => {
-    setUserData({ ...UserData, [type]: e?.target?.value });
+    setUserData({ ...userData, [type]: e?.target?.value });
   };
+
+  const [show, setShow] = useState(false);
+  /* const [SchoolListData, SchoolListDataSet] = useState<{school: string, subject: string, diploma: string}[]>([]);
+  const handleSubmit() = () => {
+    setSchoolListData(userData)
+  }
+ */
+  const blockStyle = { display: "block" };
+  const paddingStyle = { padding: "10px" };
 
   return (
     <div className="containerSchool">
@@ -30,7 +35,7 @@ export default function Schoolinput() {
             <label style={blockStyle}>Schoolname</label>
             <input
               type="text"
-              value={UserData.school}
+              value={userData.school}
               onChange={(e) => handleInputChange(e, "school")}
             ></input>
           </div>
@@ -38,7 +43,7 @@ export default function Schoolinput() {
             <label style={blockStyle}>Subject</label>
             <input
               type="text"
-              value={UserData.subject}
+              value={userData.subject}
               onChange={(e) => handleInputChange(e, "subject")}
             ></input>
           </div>
@@ -46,13 +51,16 @@ export default function Schoolinput() {
             <label style={blockStyle}>Diploma</label>
             <input
               type="text"
-              value={UserData.diploma}
+              value={userData.diploma}
               onChange={(e) => handleInputChange(e, "diploma")}
             ></input>
           </div>
+          <button className="formButton" type="submit">
+            Save
+          </button>
         </form>
       )}
-      {!show && <ViewSchool {...UserData}></ViewSchool>}
+      {!show && <ViewSchool {...userData}></ViewSchool>}
     </div>
   );
 }

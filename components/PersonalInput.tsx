@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import ViewPersonal from "./ViewPersonal";
+import "./PersonalInput.css";
 
 export default function PersonalInput() {
   const UserInfo = {
