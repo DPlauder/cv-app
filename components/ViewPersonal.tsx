@@ -1,8 +1,11 @@
 export interface Props {
-  name: string;
+  firstname: string;
+  lastname: string;
   adress: string;
+  city: string;
+  zip: string;
   email: string;
-  tel: string;
+  telefon: string;
 }
 
 export default function ViewPersonal(props: Props) {
@@ -10,7 +13,7 @@ export default function ViewPersonal(props: Props) {
     <div className="containerPersonalView">
       <div>
         <label>Name</label>
-        <div>{props.name}</div>
+        <div>{props.firstname}</div>
       </div>
       <div>
         <label>Adress</label>
@@ -22,7 +25,7 @@ export default function ViewPersonal(props: Props) {
       </div>
       <div>
         <label>Tel</label>
-        <div>{props.tel}</div>
+        <div>{props.telefon}</div>
       </div>
     </div>
   );

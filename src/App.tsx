@@ -1,7 +1,7 @@
 import Schoolinput from "../components/SchoolInput";
-import PersonalInput from "../components/PersonalInput";
 import JobInput from "../components/JobInput";
 import NewPersonalInput from "../components/newPersonalInput";
+import "./App.css";
 
 function App() {
   return (
@@ -9,7 +9,6 @@ function App() {
       <header>
         <h1>CV-APP</h1>
       </header>
-      <PersonalInput />
       <NewPersonalInput />
       <Schoolinput />
       <JobInput />
