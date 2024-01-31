@@ -9,7 +9,7 @@ export default function JobInput() {
     start: "",
     end: "",
   };
-  const [UserData, setUserData] = useState(jobData);
+  const [userData, setUserData] = useState(jobData);
   const [show, setShow] = useState(false);
 
   const blockStyle = { display: "block" };
@@ -18,7 +18,7 @@ export default function JobInput() {
     e: ChangeEvent<HTMLInputElement>,
     type: string
   ) => {
-    setUserData({ ...UserData, [type]: e?.target?.value });
+    setUserData({ ...userData, [type]: e?.target?.value });
   };
 
   return (
@@ -32,7 +32,7 @@ export default function JobInput() {
             <label style={blockStyle}>Company</label>
             <input
               type="text"
-              value={UserData.company}
+              value={userData.company}
               onChange={(e) => handleInputChange(e, "company")}
             ></input>
           </div>
@@ -40,7 +40,7 @@ export default function JobInput() {
             <label style={blockStyle}>Position</label>
             <input
               type="text"
-              value={UserData.position}
+              value={userData.position}
               onChange={(e) => handleInputChange(e, "position")}
             ></input>
           </div>
@@ -48,7 +48,7 @@ export default function JobInput() {
             <label style={blockStyle}>Task</label>
             <input
               type="text"
-              value={UserData.tasks}
+              value={userData.tasks}
               onChange={(e) => handleInputChange(e, "tasks")}
             ></input>
           </div>
@@ -56,7 +56,7 @@ export default function JobInput() {
             <label style={blockStyle}>Start Date</label>
             <input
               type="date"
-              value={UserData.start}
+              value={userData.start}
               onChange={(e) => handleInputChange(e, "start")}
             ></input>
           </div>
@@ -64,13 +64,13 @@ export default function JobInput() {
             <label style={blockStyle}>End Date</label>
             <input
               type="date"
-              value={UserData.end}
+              value={userData.end}
               onChange={(e) => handleInputChange(e, "end")}
             ></input>
           </div>
         </form>
       )}
-      {!show && <ViewJob {...UserData}></ViewJob>}
+      {!show && <ViewJob {...userData}></ViewJob>}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import ViewSchool from "./ViewSchool";
 
 export default function Schoolinput() {
@@ -8,6 +8,13 @@ export default function Schoolinput() {
     diploma: "",
   };
   const [userData, setUserData] = useState(schoolData);
+
+  const [show, setShow] = useState(false);
+
+  const [schoolListData, setSchoolListData] = useState<
+    { school: string; subject: string; diploma: string }[]
+  >([]);
+
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement>,
     type: string
@@ -15,12 +22,21 @@ export default function Schoolinput() {
     setUserData({ ...userData, [type]: e?.target?.value });
   };
 
-  const [show, setShow] = useState(false);
-  /* const [SchoolListData, SchoolListDataSet] = useState<{school: string, subject: string, diploma: string}[]>([]);
-  const handleSubmit() = () => {
-    setSchoolListData(userData)
-  }
- */
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setSchoolListData([
+      ...schoolListData,
+      {
+        school: userData.school,
+        subject: userData.subject,
+        diploma: userData.diploma,
+      },
+    ]);
+    setUserData(schoolData);
+    console.log(schoolListData);
+    console.log(userData.school);
+  };
+
   const blockStyle = { display: "block" };
   const paddingStyle = { padding: "10px" };
 
@@ -30,7 +46,7 @@ export default function Schoolinput() {
         School
       </button>
       {show && (
-        <form>
+        <form onSubmit={handleSubmit}>
           <div style={paddingStyle}>
             <label style={blockStyle}>Schoolname</label>
             <input
