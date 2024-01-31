@@ -27,7 +27,8 @@
     "components/SchoolInput.tsx",
     "components/ViewJob.tsx",
     "components/ViewPersonal.tsx",
-    "components/ViewSchool.tsx"
+    "components/ViewSchool.tsx",
+    "components/newPersonalInput.tsx"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

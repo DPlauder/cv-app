@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import ViewSchool from "./ViewSchool";
+import Form from "react-bootstrap/Form";
 
 export default function Schoolinput() {
   const schoolData = {
@@ -62,7 +63,7 @@ export default function Schoolinput() {
         School
       </button>
       {show && (
-        <form onSubmit={handleSubmit}>
+        <Form.Label onSubmit={handleSubmit}>
           <div style={paddingStyle}>
             <label style={blockStyle}>Schoolname</label>
             <input
@@ -90,7 +91,7 @@ export default function Schoolinput() {
           <button className="formButton" type="submit">
             Save
           </button>
-        </form>
+        </Form.Label>
       )}
       {!show && (
         <ViewSchool

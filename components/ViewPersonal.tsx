@@ -7,7 +7,7 @@ export interface Props {
 
 export default function ViewPersonal(props: Props) {
   return (
-    <div className="container">
+    <div className="containerPersonalView">
       <div>
         <label>Name</label>
         <div>{props.name}</div>
