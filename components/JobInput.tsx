@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import ViewJob from "./ViewJob";
 
 export default function JobInput() {
@@ -11,6 +11,15 @@ export default function JobInput() {
   };
   const [userData, setUserData] = useState(jobData);
   const [show, setShow] = useState(false);
+  const [jobList, setJobList] = useState<
+    {
+      company: string;
+      position: string;
+      task: string;
+      start: string;
+      end: string;
+    }[]
+  >([]);
 
   const blockStyle = { display: "block" };
   const paddingStyle = { padding: "10px" };
@@ -20,6 +29,28 @@ export default function JobInput() {
   ) => {
     setUserData({ ...userData, [type]: e?.target?.value });
   };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setJobList([
+      ...jobList,
+      {
+        company: userData.company,
+        position: userData.position,
+        task: userData.tasks,
+        start: userData.start,
+        end: userData.end,
+      },
+    ]);
+    setUserData(jobData);
+  }; /* 
+  const handleEdit = (index: number) => {
+
+  } */
+  const handleDelete = (index: number) => {
+    const updateJobsList = [...jobList];
+    updateJobsList.splice(index, 1);
+    setJobList(updateJobsList);
+  };
 
   return (
     <div className="containerJob">
@@ -27,7 +58,7 @@ export default function JobInput() {
         Job
       </button>
       {show && (
-        <form>
+        <form onSubmit={handleSubmit}>
           <div style={paddingStyle}>
             <label style={blockStyle}>Company</label>
             <input
@@ -68,9 +99,12 @@ export default function JobInput() {
               onChange={(e) => handleInputChange(e, "end")}
             ></input>
           </div>
+          <button className="formButton" type="submit">
+            Save
+          </button>
         </form>
       )}
-      {!show && <ViewJob {...userData}></ViewJob>}
+      {!show && <ViewJob jobs={jobList} onDelete={handleDelete}></ViewJob>}
     </div>
   );
 }

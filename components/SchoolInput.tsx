@@ -3,7 +3,7 @@ import ViewSchool from "./ViewSchool";
 
 export default function Schoolinput() {
   const schoolData = {
-    school: "",
+    name: "",
     subject: "",
     diploma: "",
   };
@@ -12,7 +12,7 @@ export default function Schoolinput() {
   const [show, setShow] = useState(false);
 
   const [schoolListData, setSchoolListData] = useState<
-    { school: string; subject: string; diploma: string }[]
+    { name: string; subject: string; diploma: string }[]
   >([]);
 
   const handleInputChange = (
@@ -27,14 +27,30 @@ export default function Schoolinput() {
     setSchoolListData([
       ...schoolListData,
       {
-        school: userData.school,
+        name: userData.name,
         subject: userData.subject,
         diploma: userData.diploma,
       },
     ]);
     setUserData(schoolData);
     console.log(schoolListData);
-    console.log(userData.school);
+    console.log(userData.name);
+  };
+  const handleDelete = (index: number) => {
+    const updateSchoolListData = [...schoolListData];
+    updateSchoolListData.splice(index, 1);
+    setSchoolListData(updateSchoolListData);
+  };
+
+  const handleEdit = (
+    index: number,
+    updateSchool: { name: string; subject: string; diploma: string }
+  ) => {
+    console.log(updateSchool.name);
+
+    const updateSchoolList = [...schoolListData];
+    updateSchoolList[index] = updateSchool;
+    setSchoolListData(updateSchoolList);
   };
 
   const blockStyle = { display: "block" };
@@ -51,8 +67,8 @@ export default function Schoolinput() {
             <label style={blockStyle}>Schoolname</label>
             <input
               type="text"
-              value={userData.school}
-              onChange={(e) => handleInputChange(e, "school")}
+              value={userData.name}
+              onChange={(e) => handleInputChange(e, "name")}
             ></input>
           </div>
           <div style={paddingStyle}>
@@ -76,7 +92,13 @@ export default function Schoolinput() {
           </button>
         </form>
       )}
-      {!show && <ViewSchool {...userData}></ViewSchool>}
+      {!show && (
+        <ViewSchool
+          schools={schoolListData}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        ></ViewSchool>
+      )}
     </div>
   );
 }

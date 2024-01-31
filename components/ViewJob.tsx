@@ -1,34 +1,35 @@
+import "./Jobs.css";
+
 export interface Props {
-  company: string;
-  position: string;
-  tasks: string;
-  start: string;
-  end: string;
+  jobs: {
+    company: string;
+    position: string;
+    task: string;
+    start: string;
+    end: string;
+  }[];
+  onDelete: (index: number) => void;
 }
 
-export default function ViewJob(props: Props) {
+const ViewJob = ({ jobs, onDelete }: Props) => {
   return (
     <div className="container">
-      <div>
-        <label>Company</label>
-        <div>{props.company}</div>
-      </div>
-      <div>
-        <label>Position</label>
-        <div>{props.position}</div>
-      </div>
-      <div>
-        <label>Tasks</label>
-        <div>{props.tasks}</div>
-      </div>
-      <div>
-        <label>Start</label>
-        <div>{props.start}</div>
-      </div>
-      <div>
-        <label>End</label>
-        <div>{props.end}</div>
-      </div>
+      {jobs.map((job, index) => (
+        <div key={index} className="jobContainer">
+          <label>Comany</label>
+          <div>{job.company}</div>
+          <label>Position</label>
+          <div>{job.position}</div>
+          <label>Tasks</label>
+          <div>{job.task}</div>
+          <label>Start</label>
+          <div>{job.start}</div>
+          <label>End</label>
+          <div>{job.end}</div>
+          <button onClick={() => onDelete(index)}>X</button>
+        </div>
+      ))}
     </div>
   );
-}
+};
+export default ViewJob;
