@@ -42,10 +42,8 @@ export default function JobInput() {
       },
     ]);
     setUserData(jobData);
-  }; /* 
-  const handleEdit = (index: number) => {
+  };
 
-  } */
   const handleDelete = (index: number) => {
     const updateJobsList = [...jobList];
     updateJobsList.splice(index, 1);
@@ -54,14 +52,18 @@ export default function JobInput() {
 
   return (
     <div className="containerJob">
-      <button onClick={() => (show ? setShow(false) : setShow(true))}>
-        Job
+      <button
+        onClick={() => (show ? setShow(false) : setShow(true))}
+        className="btnJobs"
+      >
+        Add Job
       </button>
       {show && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="jobForm">
           <div style={paddingStyle}>
             <label style={blockStyle}>Company</label>
             <input
+              className="textBox"
               type="text"
               value={userData.company}
               onChange={(e) => handleInputChange(e, "company")}
@@ -70,6 +72,7 @@ export default function JobInput() {
           <div style={paddingStyle}>
             <label style={blockStyle}>Position</label>
             <input
+              className="textBox"
               type="text"
               value={userData.position}
               onChange={(e) => handleInputChange(e, "position")}
@@ -78,6 +81,7 @@ export default function JobInput() {
           <div style={paddingStyle}>
             <label style={blockStyle}>Task</label>
             <input
+              className="textBox"
               type="text"
               value={userData.tasks}
               onChange={(e) => handleInputChange(e, "tasks")}
@@ -86,6 +90,7 @@ export default function JobInput() {
           <div style={paddingStyle}>
             <label style={blockStyle}>Start Date</label>
             <input
+              className="textBox dateBox"
               type="date"
               value={userData.start}
               onChange={(e) => handleInputChange(e, "start")}
@@ -94,6 +99,7 @@ export default function JobInput() {
           <div style={paddingStyle}>
             <label style={blockStyle}>End Date</label>
             <input
+              className="textBox dateBox"
               type="date"
               value={userData.end}
               onChange={(e) => handleInputChange(e, "end")}

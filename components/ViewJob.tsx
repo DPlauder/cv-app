@@ -13,19 +13,19 @@ export interface Props {
 
 const ViewJob = ({ jobs, onDelete }: Props) => {
   return (
-    <div className="container">
+    <div className="containerJobs">
       {jobs.map((job, index) => (
         <div key={index} className="jobContainer">
           <label>Comany</label>
-          <div>{job.company}</div>
+          <div className="textBox">{job.company}</div>
           <label>Position</label>
-          <div>{job.position}</div>
+          <div className="textBox">{job.position}</div>
           <label>Tasks</label>
-          <div>{job.task}</div>
+          <div className="textBox">{job.task}</div>
           <label>Start</label>
-          <div>{job.start}</div>
+          <div className="textBox">{job.start}</div>
           <label>End</label>
-          <div>{job.end}</div>
+          <div className="textBox">{job.end}</div>
           <button onClick={() => onDelete(index)}>X</button>
         </div>
       ))}

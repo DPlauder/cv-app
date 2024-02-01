@@ -34,9 +34,9 @@ export default function NewPersonalInput() {
     show ? setShow(false) : setShow(true);
   };
   return (
-    <div>
+    <div className="personalForm">
       {show && (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="personalFormInput">
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridFirstname">
               <Form.Label>Firstname</Form.Label>

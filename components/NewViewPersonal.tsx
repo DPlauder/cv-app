@@ -29,7 +29,7 @@ export default function NewViewPersonal({
 }: Props) {
   return (
     <div>
-      <Form className="personalForm">
+      <Form className="personalFormField">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridFirstname">
             <Form.Label>Firstname</Form.Label>

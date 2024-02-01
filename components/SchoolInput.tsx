@@ -24,6 +24,7 @@ export default function Schoolinput() {
   };
 
   const handleSubmit = (e: FormEvent) => {
+    setShow(false);
     e.preventDefault();
     setSchoolListData([
       ...schoolListData,
@@ -58,15 +59,19 @@ export default function Schoolinput() {
   const paddingStyle = { padding: "10px" };
 
   return (
-    <div className="containerSchool">
-      <button onClick={() => (show ? setShow(false) : setShow(true))}>
-        School
+    <div className="containerSchools">
+      <button
+        onClick={() => (show ? setShow(false) : setShow(true))}
+        className="btnSchoolAdd"
+      >
+        Add School
       </button>
       {show && (
-        <Form.Label onSubmit={handleSubmit}>
+        <Form.Label className="schoolForm">
           <div style={paddingStyle}>
             <label style={blockStyle}>Schoolname</label>
             <input
+              className="textBox"
               type="text"
               value={userData.name}
               onChange={(e) => handleInputChange(e, "name")}
@@ -75,6 +80,7 @@ export default function Schoolinput() {
           <div style={paddingStyle}>
             <label style={blockStyle}>Subject</label>
             <input
+              className="textBox"
               type="text"
               value={userData.subject}
               onChange={(e) => handleInputChange(e, "subject")}
@@ -83,12 +89,13 @@ export default function Schoolinput() {
           <div style={paddingStyle}>
             <label style={blockStyle}>Diploma</label>
             <input
+              className="textBox"
               type="text"
               value={userData.diploma}
               onChange={(e) => handleInputChange(e, "diploma")}
             ></input>
           </div>
-          <button className="formButton" type="submit">
+          <button className="formButton" onClick={handleSubmit}>
             Save
           </button>
         </Form.Label>

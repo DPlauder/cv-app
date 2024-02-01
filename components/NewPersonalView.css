@@ -1,3 +1,9 @@
-.personalForm {
+.personalFormInput {
+  padding: 20px;
+}
+
+.personalFormField {
   background-color: rgb(216, 216, 216);
+
+  padding: 20px;
 }

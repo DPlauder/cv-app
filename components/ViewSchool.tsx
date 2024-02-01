@@ -35,32 +35,35 @@ const ViewSchool = ({ schools, onDelete, onEdit }: Props) => {
     setEditedValues({});
   };
   return (
-    <div className="container">
+    <div className="containerSchoolList">
       {schools.map((school, index) => (
         <div key={index} className="schoolContainer">
           <label>School</label>
           <div
+            className="textBox"
             contentEditable
             onInput={(e) =>
-              handleInputChange("name", e.currentTarget.textContent!)
+              handleInputChange("name", e.currentTarget.textContent || "")
             }
           >
             {school.name}
           </div>
           <label>Subject</label>
           <div
+            className="textBox"
             contentEditable
             onInput={(e) =>
-              handleInputChange("subject", e.currentTarget.textContent!)
+              handleInputChange("subject", e.currentTarget.textContent || "")
             }
           >
             {school.subject}
           </div>
           <label>Diploma</label>
           <div
+            className="textBox"
             contentEditable
             onInput={(e) =>
-              handleInputChange("diploma", e.currentTarget.textContent!)
+              handleInputChange("diploma", e.currentTarget.textContent || "")
             }
           >
             {school.diploma}
