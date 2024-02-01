@@ -3,7 +3,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { ChangeEvent, useState } from "react";
-import ViewPersonal from "./ViewPersonal";
+import NewViewPersonal from "./NewViewPersonal";
+import "./NewPersonalView.css";
 
 export default function NewPersonalInput() {
   const UserInfo = {
@@ -51,7 +52,6 @@ export default function NewPersonalInput() {
                 }
               />
             </Form.Group>
-
             <Form.Group as={Col} controlId="formGridLastname">
               <Form.Label>Lastname</Form.Label>
               <Form.Control
@@ -79,7 +79,6 @@ export default function NewPersonalInput() {
                 }
               />
             </Form.Group>
-
             <Form.Group as={Col} controlId="formGridTel">
               <Form.Label>Telefon</Form.Label>
               <Form.Control
@@ -106,7 +105,6 @@ export default function NewPersonalInput() {
               }
             />
           </Form.Group>
-
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridCity">
               <Form.Label>City</Form.Label>
@@ -134,7 +132,13 @@ export default function NewPersonalInput() {
           </Button>
         </Form>
       )}
-      {!show && <ViewPersonal {...userData}></ViewPersonal>}
+      {!show && (
+        <NewViewPersonal
+          {...userData}
+          handleInputChange={handleInputChange}
+          handleButtonClick={handleButtonClick}
+        ></NewViewPersonal>
+      )}
     </div>
   );
 }

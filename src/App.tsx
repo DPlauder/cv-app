@@ -1,6 +1,6 @@
 import Schoolinput from "../components/SchoolInput";
 import JobInput from "../components/JobInput";
-import NewPersonalInput from "../components/newPersonalInput";
+import NewPersonalInput from "../components/NewPersonalInput";
 import "./App.css";
 
 function App() {
